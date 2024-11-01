@@ -1,5 +1,6 @@
 /* Plugins Configuration */
 plugins {
+
     /* Application Plugin */
     id 'application'
 
@@ -20,22 +21,28 @@ plugins {
 }
 
 /* Variable Declaration */
-def mainClassName = 'com.techhub.grpcdemo.Start'
+def mainClassName = 'com.techhub.grpcdemo.server.Start'
 
 /* Application Configuration */
 group = 'com.techhub'
 version = '1.0.0'
+
 application {
+
+    /* Main class name configuration */
     mainClass = mainClassName
 }
 
 /* Repository configuration for dependencies of library */
 repositories {
+
+    /* The Maven Central Repository */
     mavenCentral()
 }
 
 /* Dependencies Configuration */
 dependencies {
+
     /* gRPC Dependency */
     implementation(group: 'io.grpc', name: 'grpc-protobuf', version: '1.68.1')
     implementation group: 'io.grpc', name: 'grpc-stub', version: '1.68.1'
@@ -65,7 +72,7 @@ dependencies {
 
     /* Slf4j Dependency */
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
-    //implementation 'ch.qos.logback:logback-classic:1.7.10'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
 
     /* JUnit Dependency */
     testImplementation platform('org.junit:junit-bom:5.10.0')
@@ -74,16 +81,20 @@ dependencies {
 
 /* JUnit Test Configuration */
 test {
+
+    /* Use JUnit Platform */
     useJUnitPlatform()
 }
 
 /* GRPC Protobuf Configuration */
 protobuf {
+
     protoc{
         artifacts{
             artifact = 'com.google.protobuf:protoc:4.28.3'
         }
     }
+
     plugins{
         grpc{
             artifacts {
@@ -91,6 +102,7 @@ protobuf {
             }
         }
     }
+
     generateProtoTasks {
         all()*.plugins {
             grpc{}
@@ -100,11 +112,15 @@ protobuf {
 
 /* Build JAR Configuration */
 jar {
+
+    /* The Manifest file Configuration */
     manifest {
         attributes(
                 'Main-Class': mainClassName
         )
     }
+
+    /* JAR Dependency from classpath Configuration */
     from {
         duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
         configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}

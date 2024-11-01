@@ -1,16 +1,19 @@
 syntax = "proto3";
 option java_multiple_files = true;
 
-package com.techhub.grpcdemo.services;
+package com.techhub.grpc.services.employee;
 
+/* Defines the GRPC EmployeeService */
 service EmployeeService{
-  rpc addNewEmployee(stream EmployeeRequest) returns (stream EmployeeResponse){}
+  rpc addNewEmployee(stream EmployeeResponse) returns (stream EmployeeRequest){}
 }
 
+/* Defines the GRPC EmployeeRequest */
 message EmployeeRequest{
   string name=1;
 }
 
+/* Defines the GRPC EmployeeResponse */
 message EmployeeResponse{
   string msg = 1;
 }
