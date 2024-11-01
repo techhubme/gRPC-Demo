@@ -1,0 +1,108 @@
+/* Plugins Configuration */
+plugins {
+    /* Application Plugin */
+    id 'application'
+
+    /* Java Plugin */
+    id 'java'
+
+    /* Protobuf Plugin */
+    id 'com.google.protobuf' version('0.9.2')
+
+    /* Lombok Plugin */
+    id 'io.freefair.lombok' version('8.4')
+
+    /* Sonarqube Plugin */
+    //id 'org.sonarqube' version('4.0.0.2929')
+
+    /* New Relic Plugin */
+    //id 'de.undercouch.download' version('5.3.0')
+}
+
+/* Variable Declaration */
+def mainClassName = 'com.techhub.grpcdemo.Start'
+
+/* Application Configuration */
+group = 'com.techhub'
+version = '1.0.0'
+application {
+    mainClass = mainClassName
+}
+
+/* Repository configuration for dependencies of library */
+repositories {
+    mavenCentral()
+}
+
+/* Dependencies Configuration */
+dependencies {
+    /* gRPC Dependency */
+    implementation(group: 'io.grpc', name: 'grpc-protobuf', version: '1.68.1')
+    implementation group: 'io.grpc', name: 'grpc-stub', version: '1.68.1'
+    implementation 'io.grpc:grpc-netty-shaded:1.68.1'
+    runtimeOnly group: 'io.grpc', name: 'grpc-services', version: '1.68.1'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.28.3'
+    implementation group: 'com.google.errorprone', name: 'error_prone_annotations', version: '2.35.1'
+
+    /* Tomcat annotations API Dependency, required for Java 9+ version */
+    implementation group: 'org.apache.tomcat', name: 'tomcat-annotations-api', version: '11.0.0'
+
+    /* Jackson Fasterxml Dependency */
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.18.1'
+
+    /* JSON Dependency */
+    implementation group: 'org.json', name: 'json', version: '20240303'
+
+    /* RxJava Dependency */
+    implementation group: 'io.reactivex.rxjava3', name: 'rxjava', version: '3.1.9'
+
+    /* Lombok Dependency */
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+
+    /* Slf4j Dependency */
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+
+    /* JUnit Dependency */
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+/* JUnit Test Configuration */
+test {
+    useJUnitPlatform()
+}
+
+/* GRPC Protobuf Configuration */
+protobuf {
+    protoc{
+        artifacts{
+            artifact = 'com.google.protobuf:protoc:4.28.3'
+        }
+    }
+    plugins{
+        grpc{
+            artifacts {
+                artifact = 'io.grpc:protoc-gen-grpc-java:1.51.0'
+            }
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc{}
+        }
+    }
+}
+
+/* Build JAR Configuration */
+jar {
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
+    from {
+        duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+        configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+    }
+}
