@@ -3,8 +3,6 @@ package com.techhub.grpcdemo.server;
 import io.grpc.netty.shaded.io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
-
 /**
  * The Main class and starting point of the application.
  *
@@ -14,7 +12,7 @@ import java.io.IOException;
 public class Start {
 
     /** The Default Port number of Server */
-    private static final int DEFAULT_PORT_NUMBER = 8980;
+    private static final int DEFAULT_PORT_NUMBER = 9080;
 
     /** Defines the environment variable name for GRPC Server port number */
     private static final String SYSTEM_ENV_PORT_NUMBER = "GRPC_SERVER_PORT";
@@ -49,7 +47,7 @@ public class Start {
      * @return int value as port number
      */
     private static int parsePortNumber(String port){
-        if(!StringUtil.isNullOrEmpty(port) && port.matches("[0-9]{5}")){
+        if(!StringUtil.isNullOrEmpty(port) && port.matches("[0-9]{4}")){
             return Integer.parseInt(port);
         }else{
             return DEFAULT_PORT_NUMBER;

@@ -5,7 +5,7 @@ package com.techhub.grpc.services.employee;
 
 /* Defines the GRPC EmployeeService */
 service EmployeeService{
-  rpc addNewEmployee(stream EmployeeResponse) returns (stream EmployeeRequest){}
+  rpc addNewEmployee(stream EmployeeRequest) returns (stream EmployeeResponse){}
 }
 
 /* Defines the GRPC EmployeeRequest */

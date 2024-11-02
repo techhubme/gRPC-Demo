@@ -27,12 +27,16 @@ public class GRPCServer {
      */
     public void initializeAndStart() throws Exception {
         log.info("Initializing The GRPCServer");
-        Server server = Grpc.newServerBuilderForPort(PORT_NUMBER, InsecureServerCredentials.create())
+        Server server = Grpc.newServerBuilderForPort(this.PORT_NUMBER, InsecureServerCredentials.create())
                 .addService(new EmployeeService())
                 .build();
-//        Server server = ServerBuilder.forPort(this.PORT_NUMBER).addService(new EmployeeService()).build();
-        log.info("Server Starting");
+
+        /* Another Alternative approach to create the server */
+        //Server server = ServerBuilder.forPort(this.PORT_NUMBER).addService(new EmployeeService()).build();
+
+        log.info("Starting the Server");
         server.start();
-        log.info("Server Started and listening on port {}",this.PORT_NUMBER);
+        ApplicationReadyEvent.onServerReady(this.PORT_NUMBER);
+        server.awaitTermination();
     }
 }
