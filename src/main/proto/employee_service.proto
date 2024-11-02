@@ -5,15 +5,21 @@ package com.techhub.grpc.services.employee;
 
 /* Defines the GRPC EmployeeService */
 service EmployeeService{
-  rpc addNewEmployee(stream EmployeeRequest) returns (stream EmployeeResponse){}
+  rpc EmployeeStream(stream EmployeeControl) returns (stream EmployeeResponseData){}
+  rpc AddEmployee(stream EmployeeRequestData) returns (stream EmployeeResponseData){}
 }
 
 /* Defines the GRPC EmployeeRequest */
-message EmployeeRequest{
+message EmployeeRequestData{
   string name=1;
 }
 
 /* Defines the GRPC EmployeeResponse */
-message EmployeeResponse{
+message EmployeeResponseData{
   string msg = 1;
+}
+
+/* Defines the GRPC EmployeeControl */
+message EmployeeControl{
+  bool enabled = 1;
 }

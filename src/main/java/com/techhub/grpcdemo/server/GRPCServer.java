@@ -6,6 +6,8 @@ import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import lombok.extern.slf4j.Slf4j;
 
+import java.beans.beancontext.BeanContextServices;
+
 /**
  * The GRPC Server class for GRPC services
  *
@@ -36,7 +38,8 @@ public class GRPCServer {
 
         log.info("Starting the Server");
         server.start();
-        ApplicationReadyEvent.onServerReady(this.PORT_NUMBER);
+
+        ServerReadyEvent.onServerReady(this.PORT_NUMBER);
         server.awaitTermination();
     }
 }

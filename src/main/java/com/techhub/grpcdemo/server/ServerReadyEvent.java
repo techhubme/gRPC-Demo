@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 1.0.0
  */
 @Slf4j
-public class ApplicationReadyEvent {
+public class ServerReadyEvent {
 
 	/** The WELCOME_MSG Constant */
 	public static final String WELCOME_LINE = "WELCOME TO GRPC-Demo Application";
