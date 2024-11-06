@@ -5,13 +5,22 @@ package com.techhub.grpc.services.employee;
 
 /* Defines the GRPC EmployeeService */
 service EmployeeService{
-  rpc EmployeeStream(stream EmployeeControl) returns (stream EmployeeResponseData){}
-  rpc AddEmployee(stream EmployeeRequestData) returns (stream EmployeeResponseData){}
+    rpc addEmployee(stream EmployeeRequestData) returns (stream EmployeeResponseData){}
 }
 
 /* Defines the GRPC EmployeeRequest */
 message EmployeeRequestData{
   string name=1;
+  int32 age=2;
+  bool enabled = 3;
+  Address address = 4;
+}
+
+/* Defines the GRPC EmployeeRequest */
+message Address{
+  string locality = 1;
+  int64 pinCode = 2;
+  string state = 3;
 }
 
 /* Defines the GRPC EmployeeResponse */
@@ -19,7 +28,3 @@ message EmployeeResponseData{
   string msg = 1;
 }
 
-/* Defines the GRPC EmployeeControl */
-message EmployeeControl{
-  bool enabled = 1;
-}

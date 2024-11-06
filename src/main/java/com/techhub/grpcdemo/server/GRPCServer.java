@@ -3,10 +3,10 @@ package com.techhub.grpcdemo.server;
 import com.techhub.grpcdemo.services.EmployeeService;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
-import io.grpc.Server;
-import lombok.extern.slf4j.Slf4j;
 
-import java.beans.beancontext.BeanContextServices;
+import io.grpc.Server;
+import io.grpc.protobuf.services.ProtoReflectionService;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The GRPC Server class for GRPC services
@@ -30,6 +30,7 @@ public class GRPCServer {
     public void initializeAndStart() throws Exception {
         log.info("Initializing The GRPCServer");
         Server server = Grpc.newServerBuilderForPort(this.PORT_NUMBER, InsecureServerCredentials.create())
+                .addService(ProtoReflectionService.newInstance())
                 .addService(new EmployeeService())
                 .build();
 
