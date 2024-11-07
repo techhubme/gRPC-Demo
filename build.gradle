@@ -44,14 +44,13 @@ repositories {
 dependencies {
 
     /* gRPC Dependency */
-    implementation(group: 'io.grpc', name: 'grpc-protobuf', version: '1.68.1')
+    implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.68.1'
     implementation group: 'io.grpc', name: 'grpc-stub', version: '1.68.1'
-    implementation 'io.grpc:grpc-netty-shaded:1.68.1'
     implementation group: 'io.grpc', name: 'grpc-services', version: '1.68.1'
+    implementation group: 'io.grpc', name: 'grpc-netty-shaded', version: '1.68.1'
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '4.28.3'
     implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.28.3'
     implementation group: 'com.google.errorprone', name: 'error_prone_annotations', version: '2.35.1'
-
 
     /* Tomcat annotations API Dependency, required for Java 9+ version */
     implementation group: 'org.apache.tomcat', name: 'tomcat-annotations-api', version: '11.0.0'
@@ -84,20 +83,23 @@ dependencies {
 
 /* GRPC Protobuf Configuration */
 protobuf {
-
-    protoc{
+    protoc {
+        // Specify the protoc artifact
         artifact = 'com.google.protobuf:protoc:4.28.3'
     }
 
-    plugins{
-        grpc{
+    plugins {
+        grpc {
+            // Specify the gRPC plugin artifact
             artifact = 'io.grpc:protoc-gen-grpc-java:1.68.1'
         }
     }
 
     generateProtoTasks {
-        all()*.plugins {
-            grpc{}
+        all().forEach { task ->
+            task.plugins {
+                grpc {}
+            }
         }
     }
 }
