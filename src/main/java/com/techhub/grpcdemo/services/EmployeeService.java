@@ -14,16 +14,16 @@ import lombok.extern.slf4j.Slf4j;
  * @author Ram Niwash
  */
 @Slf4j
-public class EmployeeService extends EmployeeServiceGrpc.EmployeeServiceImplBase{
+public class EmployeeService extends EmployeeServiceGrpc.EmployeeServiceImplBase {
 
     @Override
     public StreamObserver<EmployeeRequestData> addEmployee(StreamObserver<EmployeeResponseData> responseObserver) {
 
         log.info(">> Executing EmployeeService > addEmployee(StreamObserver) >>");
-        return new StreamObserver<EmployeeRequestData>() {
+        return new StreamObserver<>() {
             @Override
             public void onNext(EmployeeRequestData value) {
-                log.info("The request body is {} this is very {}",value,"Good. !!!");
+                log.info("The request body is {} this is very {}", value, "Good. !!!");
             }
 
             @Override
