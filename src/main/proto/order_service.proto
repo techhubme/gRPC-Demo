@@ -1,0 +1,35 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.techhub.grpc.services.order;
+
+/* Defines the GRPC EmployeeService */
+service OrderService{
+    rpc placeOrder(stream OrderRequestData) returns (stream OrderResponseData){}
+}
+
+/* Defines the GRPC OrderRequestData */
+message OrderRequestData{
+  int32 orderId=1;
+  string orderType=2;
+  bool hasDiscount = 3;
+  repeated Item items = 4;
+  Store store = 5;
+}
+
+/* Defines the GRPC Item */
+message Item{
+  int64  itemId = 1;
+  string itemName = 2;
+  double price = 3;
+}
+
+message Store{
+  int64 storeId = 1;
+}
+
+/* Defines the GRPC OrderResponseData */
+message OrderResponseData{
+  string msg = 1;
+}
+

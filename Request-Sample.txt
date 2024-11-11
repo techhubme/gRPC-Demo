@@ -1,0 +1,35 @@
+-------------------------
+addEmployee(...)
+-------------------------
+{
+    "name":"Ram Niwash",
+    "age" : 27,
+    "enable": true,
+    "address":{
+          "locality": "Near Govt. School",
+           "pinCode": 151507,
+            "state":"Punjab"
+    }
+
+}
+
+-------------------------
+placeOrder(...)
+-------------------------
+{
+    "orderId":123,
+    "orderType": "NORMAL",
+    "hasDiscount": true,
+    "items": [
+        {
+            "itemId":666,
+            "itemName":"ABC",
+            "price": 4.5
+        }
+    ],
+    "store":{
+        "storeId":344
+    }
+
+}
+

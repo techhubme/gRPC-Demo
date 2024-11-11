@@ -1,6 +1,7 @@
 package com.techhub.grpcdemo.server;
 
 import com.techhub.grpcdemo.services.EmployeeService;
+import com.techhub.grpcdemo.services.OrderService;
 import com.techhub.grpcdemo.util.CMDLArgumentParser;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
@@ -49,7 +50,9 @@ public class GRPCServer {
         log.info("Initializing The GRPCServer");
         Server server = Grpc.newServerBuilderForPort(this.PORT_NUMBER, InsecureServerCredentials.create())
                 .addService(ProtoReflectionService.newInstance())
+                /* Add Service */
                 .addService(new EmployeeService())
+                .addService(new OrderService())
                 .build();
 
         /* Another Alternative approach to create the server */
