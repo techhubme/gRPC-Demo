@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ReceiptService extends ReceiptServiceGrpc.ReceiptServiceImplBase {
 
-    private JsonFormat.Printer printer = JsonFormat.printer();
+    private final JsonFormat.Printer printer = JsonFormat.printer();
 
     @Override
     public StreamObserver<ReceiptRequestData> printReceipt(StreamObserver<ReceiptResponseData> responseObserver) {
