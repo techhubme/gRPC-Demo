@@ -1,0 +1,69 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.techhub.grpc.services.receipt;
+
+service ReceiptService{
+  rpc printReceipt(stream ReceiptRequestData) returns (stream ReceiptResponseData){}
+}
+
+message ReceiptRequestData{
+  string orderType = 1;
+  string logoID = 2;
+  string cashier = 3;
+  string dateAndTime = 4;
+  string posOrderNumber = 5;
+  string refundBarcode = 6;
+  string terminalNo = 7;
+  string requestSource = 8;
+  bool subscriptionRequired = 9;
+  bool printInlineDisc = 10;
+  int32 itemCount = 11;
+  Store store = 12;
+  SaleTotal saleTotal = 13;
+  repeated Item items = 14;
+  repeated Payment payments = 15;
+  repeated  Discount discounts = 16;
+}
+
+message Store {
+  string number = 1;
+}
+
+message SaleTotal {
+  double subTotal = 1;
+  double salesTax = 2;
+  double totalDue = 3;
+}
+
+message Item{
+  string description = 1;
+  double uprice = 2;
+  double totPrice = 3;
+  double saletype = 4;
+  double lineNumber = 5;
+  double quantity = 6;
+  string UOM = 7;
+  bool isVoided = 8;
+  string type = 9;
+  bool fsaEligible = 10;
+  string itemizer = 11;
+}
+
+message Payment{
+  string mediaDescription = 1;
+  double applied = 2;
+  string approverNumber = 3;
+  string last4 = 4;
+}
+
+message Discount{
+  int32 itemLineNo = 1;
+  double applied = 2;
+  double originalAmount = 3;
+  string description = 4;
+}
+
+message ReceiptResponseData{
+  string message = 1;
+}

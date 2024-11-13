@@ -1,0 +1,15 @@
+{
+  "orderId": 123,
+  "orderType": "NORMAL",
+  "hasDiscount": true,
+  "items": [
+    {
+      "itemId": 666,
+      "itemName": "ABC",
+      "price": 4.5
+    }
+  ],
+  "store": {
+    "storeId": 344
+  }
+}

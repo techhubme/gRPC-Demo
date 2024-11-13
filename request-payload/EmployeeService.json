@@ -1,0 +1,10 @@
+{
+  "name": "Ram Niwash",
+  "age": 27,
+  "enable": true,
+  "address": {
+    "locality": "Near Govt. School",
+    "pinCode": 151507,
+    "state": "Punjab"
+  }
+}

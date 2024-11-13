@@ -2,6 +2,7 @@ package com.techhub.grpcdemo.server;
 
 import com.techhub.grpcdemo.services.EmployeeService;
 import com.techhub.grpcdemo.services.OrderService;
+import com.techhub.grpcdemo.services.ReceiptService;
 import com.techhub.grpcdemo.util.CMDLArgumentParser;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
@@ -53,6 +54,7 @@ public class GRPCServer {
                 /* Add Service */
                 .addService(new EmployeeService())
                 .addService(new OrderService())
+                .addService(new ReceiptService())
                 .build();
 
         /* Another Alternative approach to create the server */

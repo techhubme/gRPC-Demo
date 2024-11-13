@@ -1,0 +1,226 @@
+{
+  "discounts": [
+    {
+      "itemLineNo": 1,
+      "applied": 0.73,
+      "originalAmount": 2.39,
+      "description": "FREE/COUPON"
+    },
+    {
+      "itemLineNo": 2,
+      "applied": 0.13,
+      "originalAmount": 1.28,
+      "description": "10% VPP Discount"
+    },
+    {
+      "itemLineNo": 3,
+      "applied": 0.17,
+      "originalAmount": 1.69,
+      "description": "10% VPP Discount"
+    },
+    {
+      "itemLineNo": 4,
+      "applied": 0.17,
+      "originalAmount": 1.69,
+      "description": "10% VPP Discount"
+    },
+    {
+      "itemLineNo": 6,
+      "applied": 0.3,
+      "originalAmount": 1.48,
+      "description": "FREE/COUPON"
+    },
+    {
+      "itemLineNo": 7,
+      "applied": 0.3,
+      "originalAmount": 1.48,
+      "description": "FREE/COUPON"
+    }
+  ],
+  "store": {
+    "number": "9009"
+  },
+  "orderType": "pos",
+  "logoID": "DF_J",
+  "cashier": "Test",
+  "dateAndTime": "06-15-23 7:30P",
+  "posOrderNumber": "177309",
+  "refundBarcode": "10592260031924111000718",
+  "terminalNo": "37",
+  "requestSource": "POS",
+  "subscriptionRequired": true,
+  "printInlineDisc": true,
+  "itemCount": 15,
+  "items": [
+    {
+      "description": "JUSTINS DK CHOC CASHEW CU",
+      "uprice": 1.66,
+      "totPrice": 4.98,
+      "saletype": 0,
+      "lineNumber": 1,
+      "quantity": 3,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "TF"
+    },
+    {
+      "description": "HEB PCH TUNA WTR CHNK LT",
+      "uprice": 1.15,
+      "totPrice": 2.3,
+      "saletype": 0,
+      "lineNumber": 2,
+      "quantity": 2,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "HEB BRAVO FAB SFTN SHTS O",
+      "uprice": 1.52,
+      "totPrice": 1.52,
+      "saletype": 0,
+      "lineNumber": 3,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "T"
+    },
+    {
+      "description": "HEB BRAVO LAVENDER FS SHE",
+      "uprice": 1.52,
+      "totPrice": 1.52,
+      "saletype": 0,
+      "lineNumber": 4,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "T"
+    },
+    {
+      "description": "FNCY FST GRILLED CHICKEN",
+      "uprice": 0.88,
+      "totPrice": 1.76,
+      "saletype": 0,
+      "lineNumber": 5,
+      "quantity": 2,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "T"
+    },
+    {
+      "description": "HEB HH ALMNDMLK BLBRRY YO",
+      "uprice": 0.81,
+      "totPrice": 0.81,
+      "saletype": 0,
+      "lineNumber": 6,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "HEB HH ALMNDMLK BLBRRY YO",
+      "uprice": 1.03,
+      "totPrice": 1.03,
+      "saletype": 0,
+      "lineNumber": 7,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "CUCUMBERS EACH",
+      "uprice": 1.36,
+      "totPrice": 1.36,
+      "saletype": 0,
+      "lineNumber": 8,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "GREEN BELL PEPPERS LG",
+      "uprice": 0.66,
+      "totPrice": 0.66,
+      "saletype": 0,
+      "lineNumber": 9,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "JUMBO ONION YELLOW 40#",
+      "uprice": 1.08,
+      "totPrice": 0.79,
+      "saletype": 0,
+      "lineNumber": 10,
+      "quantity": 0.73,
+      "UOM": "WEIGHT",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    },
+    {
+      "description": "PREMIUM BANANAS",
+      "uprice": 0.8,
+      "totPrice": 0.8,
+      "saletype": 0,
+      "lineNumber": 11,
+      "quantity": 1,
+      "UOM": "EACH",
+      "isVoided": false,
+      "type": "REGULAR_ITEM",
+      "fsaEligible": false,
+      "itemizer": "F"
+    }
+  ],
+  "payments": [
+    {
+      "mediaDescription": "CASH",
+      "applied": 0.15
+    },
+    {
+      "mediaDescription": "CASH",
+      "applied": 20
+    },
+    {
+      "mediaDescription": "DISCOVER EPS",
+      "applied": 100.599998,
+      "approverNumber": "123456",
+      "last4": "0133"
+    },
+    {
+      "mediaDescription": "VISA EPS",
+      "applied": 80.839996,
+      "approverNumber": "123445",
+      "last4": "0000"
+    }
+  ],
+  "saleTotal": {
+    "subTotal": 181.33,
+    "salesTax": 0.11,
+    "totalDue": 181.44
+  }
+}
