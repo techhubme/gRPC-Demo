@@ -36,7 +36,6 @@ public class CMDLArgumentParser {
                 }
             }
         }
-        System.out.println("ARGS : "+COMMAND_LINE_ARGS);
     }
 
     /**
