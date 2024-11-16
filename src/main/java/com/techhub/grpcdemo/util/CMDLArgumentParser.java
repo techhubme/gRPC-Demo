@@ -13,6 +13,9 @@ public class CMDLArgumentParser {
     /* COMMAND_ARG_PREFIX constant */
     private static final String COMMAND_ARG_PREFIX = "-";
 
+    /* COMMAND_ARG_SPLITER constant */
+    private static final String COMMAND_ARG_SPLITER = ":";
+
     /* COMMAND_LINE_ARGS constant, Map for Command line arguments */
     private static final Map<String, String> COMMAND_LINE_ARGS = new HashMap<>();
 
@@ -22,21 +25,18 @@ public class CMDLArgumentParser {
      * @param args the command line arguments.
      */
     public static void parse(String[] args) {
-        if (args == null || args.length == 0) {
+        if (args == null) {
             return;
         }
-        int i = 0;
-        while (i < args.length) {
-            String argumentKey = args[i];
-            if (argumentKey.startsWith(COMMAND_ARG_PREFIX)) {
-                if (i + 1 >= args.length) {
-                    return;
+        for (String argument: args) {
+            if (argument.startsWith(COMMAND_ARG_PREFIX)) {
+                String[] keyValue = argument.split(COMMAND_ARG_SPLITER);
+                if(keyValue.length == 2) {
+                    COMMAND_LINE_ARGS.put(keyValue[0], keyValue[1]);
                 }
-                String argumentValue = args[i + 1];
-                COMMAND_LINE_ARGS.put(argumentKey, argumentValue);
             }
-            i += 2;
         }
+        System.out.println("ARGS : "+COMMAND_LINE_ARGS);
     }
 
     /**
@@ -46,7 +46,6 @@ public class CMDLArgumentParser {
      * @return String the value of command line argument.
      */
     public static String getArgumentValue(String argument) {
-        argument = COMMAND_ARG_PREFIX + argument;
         if (COMMAND_LINE_ARGS.containsKey(argument)) {
             return COMMAND_LINE_ARGS.get(argument);
         }

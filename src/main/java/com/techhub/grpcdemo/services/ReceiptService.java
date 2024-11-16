@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ReceiptService extends ReceiptServiceGrpc.ReceiptServiceImplBase {
 
+    /* JSON Format Printer */
     private final JsonFormat.Printer printer = JsonFormat.printer();
 
     @Override
@@ -20,6 +21,7 @@ public class ReceiptService extends ReceiptServiceGrpc.ReceiptServiceImplBase {
         return new StreamObserver<>() {
             @Override
             public void onNext(ReceiptRequestData requestData) {
+                ReceiptResponseData.Builder builder = ReceiptResponseData.newBuilder();
                 try {
                     String requestJson = printer.print(requestData);
                     log.info(Constants.LINE);
@@ -27,22 +29,29 @@ public class ReceiptService extends ReceiptServiceGrpc.ReceiptServiceImplBase {
                     log.info(Constants.LINE);
                     log.info("REQUEST BODY\n{}", requestData);
                     log.info(Constants.LINE);
+                    builder.setMessage(Constants.REQUEST_PROCESSED_SUCCESSFULLY);
                 } catch (InvalidProtocolBufferException ex) {
-                    log.info(Constants.EXCEPTION_OCCURRED);
-                    log.error(ex.getMessage(), ex);
-                    log.info(Constants.STACK_TRACE_ENDS);
+                    log.error(Constants.EXCEPTION_STACK_TRACE, ex);
+                    builder.setMessage(Constants.EXCEPTION_ERROR);
                 }
+                responseObserver.onNext(builder.build());
             }
 
             @Override
             public void onError(Throwable ex) {
-                log.info(Constants.EXCEPTION_OCCURRED);
-                log.error(ex.getMessage(), ex);
-                log.info(Constants.STACK_TRACE_ENDS);
+                log.error(Constants.EXCEPTION_STACK_TRACE, ex);
+                ReceiptResponseData responseData = ReceiptResponseData.newBuilder()
+                        .setMessage(Constants.EXCEPTION_ERROR)
+                        .build();
+                responseObserver.onNext(responseData);
             }
 
             @Override
             public void onCompleted() {
+                ReceiptResponseData responseData = ReceiptResponseData.newBuilder()
+                        .setMessage(Constants.STREAM_CLOSED)
+                        .build();
+                responseObserver.onNext(responseData);
                 responseObserver.onCompleted();
             }
         };

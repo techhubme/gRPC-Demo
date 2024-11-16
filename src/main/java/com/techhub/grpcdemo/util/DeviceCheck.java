@@ -15,16 +15,12 @@ import java.util.Collections;
 public final class DeviceCheck {
 
     public static void showAllDevices() {
-        log.info(Constants.LINE);
-        log.info("LIST OF CONNECTED DEVICES");
         try {
             UsbServices services = UsbHostManager.getUsbServices();
             UsbHub usbHub = services.getRootUsbHub();
             listDevices(usbHub);
         } catch (UsbException exception) {
-            log.info(Constants.EXCEPTION_OCCURRED);
-            log.error(exception.getMessage(), exception);
-            log.info(Constants.STACK_TRACE_ENDS);
+            log.error(Constants.EXCEPTION_STACK_TRACE, exception);
         }
     }
 

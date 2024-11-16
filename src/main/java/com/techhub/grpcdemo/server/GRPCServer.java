@@ -24,7 +24,7 @@ public class GRPCServer {
     private static final int DEFAULT_PORT_NUMBER = 9080;
 
     /* PORT constant */
-    private static final String PORT = "port";
+    private static final String PORT = "-port";
 
     /* PORT_REGEX constant */
     private static final String PORT_REGEX = "[0-9]{4}";
@@ -51,7 +51,7 @@ public class GRPCServer {
         log.info("Initializing The GRPCServer");
         Server server = Grpc.newServerBuilderForPort(this.PORT_NUMBER, InsecureServerCredentials.create())
                 .addService(ProtoReflectionService.newInstance())
-                /* Add Service */
+                /* Add Services here */
                 .addService(new EmployeeService())
                 .addService(new OrderService())
                 .addService(new ReceiptService())

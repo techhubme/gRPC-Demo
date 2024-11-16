@@ -53,7 +53,7 @@
   "itemCount": 15,
   "items": [
     {
-      "description": "JUSTINS DK CHOC CASHEW CU",
+      "description": "Item 1 Sample",
       "uprice": 1.66,
       "totPrice": 4.98,
       "saletype": 0,
@@ -66,7 +66,7 @@
       "itemizer": "TF"
     },
     {
-      "description": "HEB PCH TUNA WTR CHNK LT",
+      "description": "Item 2 Sample",
       "uprice": 1.15,
       "totPrice": 2.3,
       "saletype": 0,
@@ -79,7 +79,7 @@
       "itemizer": "F"
     },
     {
-      "description": "HEB BRAVO FAB SFTN SHTS O",
+      "description": "Kaddu Primum",
       "uprice": 1.52,
       "totPrice": 1.52,
       "saletype": 0,
@@ -92,7 +92,7 @@
       "itemizer": "T"
     },
     {
-      "description": "HEB BRAVO LAVENDER FS SHE",
+      "description": "Muli Primum",
       "uprice": 1.52,
       "totPrice": 1.52,
       "saletype": 0,
@@ -105,7 +105,7 @@
       "itemizer": "T"
     },
     {
-      "description": "FNCY FST GRILLED CHICKEN",
+      "description": "Gajjar Primum",
       "uprice": 0.88,
       "totPrice": 1.76,
       "saletype": 0,
@@ -118,7 +118,7 @@
       "itemizer": "T"
     },
     {
-      "description": "HEB HH ALMNDMLK BLBRRY YO",
+      "description": "Nariyal Primum",
       "uprice": 0.81,
       "totPrice": 0.81,
       "saletype": 0,
@@ -131,7 +131,7 @@
       "itemizer": "F"
     },
     {
-      "description": "HEB HH ALMNDMLK BLBRRY YO",
+      "description": "Indian Mango",
       "uprice": 1.03,
       "totPrice": 1.03,
       "saletype": 0,
@@ -170,7 +170,7 @@
       "itemizer": "F"
     },
     {
-      "description": "JUMBO ONION YELLOW 40#",
+      "description": "JUMBO ONION YELLOW 40",
       "uprice": 1.08,
       "totPrice": 0.79,
       "saletype": 0,

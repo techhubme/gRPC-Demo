@@ -17,8 +17,8 @@ import java.util.stream.Stream;
 public class CMDLArgumentParserTest {
 
     /* The COMMAND LINE ARGUMENTS */
-    private static final String[] CMDL_ARGS = {"-port", "4500", "-arg1", "Hello", "-arg2", "89", "-arg3", "u87g",
-            "-arg4", "jyoti", "-arg5"};
+    private static final String[] CMDL_ARGS = {"-port:4500", "-arg1:Hello", "-arg2:89", "-arg3:u87g",
+            "-arg4:jyoti", "-arg5"};
 
     @Test
     @Order(1)
@@ -36,11 +36,11 @@ public class CMDLArgumentParserTest {
     }
 
     private static Stream<Arguments> getArgumentTestInputs() {
-        return Stream.of(Arguments.arguments("port", "4500"),
-                Arguments.arguments("arg1", "Hello"),
-                Arguments.arguments("arg2", "89"),
-                Arguments.arguments("arg3", "u87g"),
-                Arguments.arguments("arg4", "jyoti"));
+        return Stream.of(Arguments.arguments("-port", "4500"),
+                Arguments.arguments("-arg1", "Hello"),
+                Arguments.arguments("-arg2", "89"),
+                Arguments.arguments("-arg3", "u87g"),
+                Arguments.arguments("-arg4", "jyoti"));
     }
 
     @Test
