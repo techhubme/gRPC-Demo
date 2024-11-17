@@ -1,5 +1,6 @@
 package com.techhub.grpcdemo.server;
 
+import com.techhub.grpcdemo.config.Constant;
 import com.techhub.grpcdemo.util.CMDLArgumentParser;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,14 +19,15 @@ public class Start {
      */
     public static void main(String[] args) {
         try {
-            /* Running some Pre-process jobs before running the server */
+            /* Parsing the Command line arguments */
             CMDLArgumentParser.parse(args);
 
             /* Creating, initializing and starting the GRPC server */
             GRPCServer server = new GRPCServer();
-            server.initializeAndStart();
+            server.initialize();
+            server.start();
         } catch (Exception exception) {
-            log.error(exception.getMessage(), exception);
+            log.error(Constant.EXCEPTION_STACK_TRACE, exception);
         }
     }
 }

@@ -13,6 +13,8 @@ import io.grpc.netty.shaded.io.netty.util.internal.StringUtil;
 import io.grpc.protobuf.services.ProtoReflectionService;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+
 /**
  * The GRPC Server class for GRPC services
  *
@@ -24,6 +26,9 @@ public class GRPCServer {
     /* PORT_NUMBER of Server */
     private final int portNumber;
 
+    /*GRPC Server */
+    private Server server;
+
     /**
      * Constructor to initialize the server port.
      */
@@ -33,11 +38,9 @@ public class GRPCServer {
 
     /**
      * Initialize and Starts the GRPC server
-     *
-     * @throws Exception if something went wrong.
      */
-    public void initializeAndStart() throws Exception {
-        Server server = Grpc.newServerBuilderForPort(this.portNumber, InsecureServerCredentials.create())
+    public void initialize(){
+        this.server = Grpc.newServerBuilderForPort(this.portNumber, InsecureServerCredentials.create())
                 .addService(ProtoReflectionService.newInstance())
                 /* Add Services here */
                 .addService(new EmployeeService())
@@ -45,13 +48,21 @@ public class GRPCServer {
                 .addService(new ReceiptService())
                 .build();
 
-        /* Another Alternative approach to create the server */
-        //Server server = ServerBuilder.forPort(this.PORT_NUMBER).addService(new EmployeeService()).build();
+        /* Alternative approach to create the server */
+        //this.server = ServerBuilder.forPort(this.portNumber).build();
+    }
 
+    /**
+     * Start the server
+     *
+     * @throws IOException exception
+     * @throws InterruptedException exception
+     */
+    public void start() throws IOException, InterruptedException {
         /* Starting Server */
-        server.start();
+        this.server.start();
         ServerReadyEvent.onServerReady(this.portNumber);
-        server.awaitTermination();
+        this.server.awaitTermination();
     }
 
     /**
