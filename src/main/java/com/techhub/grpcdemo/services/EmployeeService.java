@@ -5,13 +5,13 @@ import com.techhub.grpc.services.employee.EmployeeRequestData;
 import com.techhub.grpc.services.employee.EmployeeResponseData;
 import com.techhub.grpc.services.employee.EmployeeServiceGrpc;
 
-import com.techhub.grpcdemo.config.Constants;
+import com.techhub.grpcdemo.config.Constant;
 import com.techhub.grpcdemo.dto.EmployeeDTO;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Implements the EmployeeService
+ * EmployeeService GRPC Service
  *
  * @author Ram Niwash
  */
@@ -37,30 +37,30 @@ public class EmployeeService extends EmployeeServiceGrpc.EmployeeServiceImplBase
                 EmployeeResponseData.Builder builder = EmployeeResponseData.newBuilder();
 
                 try {
-                    log.info(Constants.LINE);
+                    log.info(Constant.LINE);
                     EmployeeDTO employeeDTO = objectMapper.convertValue(requestData, EmployeeDTO.class);
                     log.info("EmployeeDTO\n{}", employeeDTO.toString());
-                    log.info(Constants.LINE);
-                    builder.setMsg(Constants.REQUEST_PROCESSED_SUCCESSFULLY);
+                    log.info(Constant.LINE);
+                    builder.setMsg(Constant.REQUEST_PROCESSED_SUCCESSFULLY);
                 }catch (Exception ex){
-                    log.error(Constants.EXCEPTION_STACK_TRACE, ex);
-                    builder.setMsg(Constants.EXCEPTION_ERROR);
+                    log.error(Constant.EXCEPTION_STACK_TRACE, ex);
+                    builder.setMsg(Constant.EXCEPTION_ERROR);
                 }
                 responseObserver.onNext(builder.build());
             }
 
             @Override
             public void onError(Throwable ex) {
-                log.error(Constants.EXCEPTION_STACK_TRACE, ex);
+                log.error(Constant.EXCEPTION_STACK_TRACE, ex);
                 EmployeeResponseData responseData = EmployeeResponseData.newBuilder()
-                        .setMsg(Constants.EXCEPTION_ERROR).build();
+                        .setMsg(Constant.EXCEPTION_ERROR).build();
                 responseObserver.onNext(responseData);
             }
 
             @Override
             public void onCompleted() {
                 EmployeeResponseData responseData = EmployeeResponseData.newBuilder()
-                        .setMsg(Constants.STREAM_CLOSED).build();
+                        .setMsg(Constant.STREAM_CLOSED).build();
                 responseObserver.onNext(responseData);
                 responseObserver.onCompleted();
             }

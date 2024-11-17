@@ -1,5 +1,7 @@
 package com.techhub.grpcdemo.util;
 
+import com.techhub.grpcdemo.config.Constant;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +11,6 @@ import java.util.Map;
  * @author Ram Niwash
  */
 public class CMDLArgumentParser {
-
-    /* COMMAND_ARG_PREFIX constant */
-    private static final String COMMAND_ARG_PREFIX = "-";
-
-    /* COMMAND_ARG_SPLITER constant */
-    private static final String COMMAND_ARG_SPLITER = ":";
 
     /* COMMAND_LINE_ARGS constant, Map for Command line arguments */
     private static final Map<String, String> COMMAND_LINE_ARGS = new HashMap<>();
@@ -29,10 +25,10 @@ public class CMDLArgumentParser {
             return;
         }
         for (String argument: args) {
-            if (argument.startsWith(COMMAND_ARG_PREFIX)) {
-                String[] keyValue = argument.split(COMMAND_ARG_SPLITER);
-                if(keyValue.length == 2) {
-                    COMMAND_LINE_ARGS.put(keyValue[0], keyValue[1]);
+            if (argument.startsWith(Constant.COMMAND_ARG_PREFIX)) {
+                String[] keyValue = argument.split(Constant.COMMAND_ARG_SPLITER);
+                if(keyValue.length == Constant.NUMBER_2) {
+                    COMMAND_LINE_ARGS.put(keyValue[Constant.NUMBER_0], keyValue[Constant.NUMBER_1]);
                 }
             }
         }
@@ -48,6 +44,6 @@ public class CMDLArgumentParser {
         if (COMMAND_LINE_ARGS.containsKey(argument)) {
             return COMMAND_LINE_ARGS.get(argument);
         }
-        throw new RuntimeException("Command line argument not found");
+        throw new RuntimeException(Constant.CMDL_ARG_NOT_FOUND);
     }
 }

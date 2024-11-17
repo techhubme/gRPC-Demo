@@ -1,6 +1,6 @@
 package com.techhub.grpcdemo.util;
 
-import com.techhub.grpcdemo.config.Constants;
+import com.techhub.grpcdemo.config.Constant;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.usb.*;
@@ -20,7 +20,7 @@ public final class DeviceCheck {
             UsbHub usbHub = services.getRootUsbHub();
             listDevices(usbHub);
         } catch (UsbException exception) {
-            log.error(Constants.EXCEPTION_STACK_TRACE, exception);
+            log.error(Constant.EXCEPTION_STACK_TRACE, exception);
         }
     }
 

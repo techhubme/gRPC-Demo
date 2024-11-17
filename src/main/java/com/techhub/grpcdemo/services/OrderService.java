@@ -4,12 +4,12 @@ import com.google.protobuf.util.JsonFormat;
 import com.techhub.grpc.services.order.OrderRequestData;
 import com.techhub.grpc.services.order.OrderResponseData;
 import com.techhub.grpc.services.order.OrderServiceGrpc;
-import com.techhub.grpcdemo.config.Constants;
+import com.techhub.grpcdemo.config.Constant;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The Order service
+ * OrderService GRPC Service
  *
  * @author Ram Niwash
  */
@@ -35,15 +35,15 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase{
                 log.info("ORDER REQUEST {}",orderRequestData);
 
                 try {
-                    log.info(Constants.LINE);
+                    log.info(Constant.LINE);
                     String json = printer.print(orderRequestData);
                     log.info("ORDER JSON :{}", json);
                 }catch (Exception ex){
-                    log.error(Constants.EXCEPTION_STACK_TRACE, ex);
+                    log.error(Constant.EXCEPTION_STACK_TRACE, ex);
                 }
 
                 OrderResponseData responseData = OrderResponseData.newBuilder()
-                        .setMsg(Constants.REQUEST_PROCESSED_SUCCESSFULLY)
+                        .setMsg(Constant.REQUEST_PROCESSED_SUCCESSFULLY)
                         .build();
 
                 responseObserver.onNext(responseData);
@@ -51,9 +51,9 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase{
 
             @Override
             public void onError(Throwable ex) {
-                log.error(Constants.EXCEPTION_STACK_TRACE, ex);
+                log.error(Constant.EXCEPTION_STACK_TRACE, ex);
                 OrderResponseData responseData = OrderResponseData.newBuilder()
-                        .setMsg(Constants.EXCEPTION_ERROR)
+                        .setMsg(Constant.EXCEPTION_ERROR)
                         .build();
                 responseObserver.onNext(responseData);
             }
@@ -61,7 +61,7 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase{
             @Override
             public void onCompleted() {
                 OrderResponseData responseData = OrderResponseData.newBuilder()
-                        .setMsg(Constants.STREAM_CLOSED)
+                        .setMsg(Constant.STREAM_CLOSED)
                         .build();
                 responseObserver.onNext(responseData);
                 responseObserver.onCompleted();

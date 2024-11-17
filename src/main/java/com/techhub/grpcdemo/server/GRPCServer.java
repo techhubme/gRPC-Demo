@@ -1,5 +1,6 @@
 package com.techhub.grpcdemo.server;
 
+import com.techhub.grpcdemo.config.Constant;
 import com.techhub.grpcdemo.services.EmployeeService;
 import com.techhub.grpcdemo.services.OrderService;
 import com.techhub.grpcdemo.services.ReceiptService;
@@ -20,26 +21,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GRPCServer {
 
-    /* The Default Port number of Server */
-    private static final int DEFAULT_PORT_NUMBER = 9080;
-
-    /* PORT constant */
-    private static final String PORT = "-port";
-
-    /* PORT_REGEX constant */
-    private static final String PORT_REGEX = "[0-9]{4}";
-
-    /* Defines the environment variable name for GRPC Server port number */
-    private static final String SYSTEM_ENV_GRPC_PORT = "GRPC_SERVER_PORT";
-
     /* PORT_NUMBER of Server */
-    private final int PORT_NUMBER;
+    private final int portNumber;
 
     /**
      * Constructor to initialize the server port.
      */
     public GRPCServer() {
-        this.PORT_NUMBER = this.getPortNumber();
+        this.portNumber = this.getPortNumber();
     }
 
     /**
@@ -48,8 +37,7 @@ public class GRPCServer {
      * @throws Exception if something went wrong.
      */
     public void initializeAndStart() throws Exception {
-        log.info("Initializing The GRPCServer");
-        Server server = Grpc.newServerBuilderForPort(this.PORT_NUMBER, InsecureServerCredentials.create())
+        Server server = Grpc.newServerBuilderForPort(this.portNumber, InsecureServerCredentials.create())
                 .addService(ProtoReflectionService.newInstance())
                 /* Add Services here */
                 .addService(new EmployeeService())
@@ -61,9 +49,8 @@ public class GRPCServer {
         //Server server = ServerBuilder.forPort(this.PORT_NUMBER).addService(new EmployeeService()).build();
 
         /* Starting Server */
-        log.info("Starting the Server");
         server.start();
-        ServerReadyEvent.onServerReady(this.PORT_NUMBER);
+        ServerReadyEvent.onServerReady(this.portNumber);
         server.awaitTermination();
     }
 
@@ -75,9 +62,9 @@ public class GRPCServer {
     private int getPortNumber() {
         String port;
         try {
-            port = CMDLArgumentParser.getArgumentValue(PORT);
+            port = CMDLArgumentParser.getArgumentValue(Constant.PORT_ARG);
         } catch (RuntimeException exception) {
-            port = System.getenv(SYSTEM_ENV_GRPC_PORT);
+            port = System.getenv(Constant.SYSTEM_ENV_GRPC_PORT);
         }
         return parsePortNumber(port);
     }
@@ -89,10 +76,10 @@ public class GRPCServer {
      * @return int value as port number
      */
     private int parsePortNumber(String port) {
-        if (!StringUtil.isNullOrEmpty(port) && port.matches(PORT_REGEX)) {
+        if (!StringUtil.isNullOrEmpty(port) && port.matches(Constant.PORT_ARG_REGEX)) {
             return Integer.parseInt(port);
         } else {
-            return DEFAULT_PORT_NUMBER;
+            return Constant.DEFAULT_GRPC_SERVER_PORT;
         }
     }
 }

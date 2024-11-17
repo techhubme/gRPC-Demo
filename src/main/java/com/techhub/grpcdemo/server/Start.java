@@ -1,6 +1,5 @@
 package com.techhub.grpcdemo.server;
 
-import com.techhub.grpcdemo.config.Constants;
 import com.techhub.grpcdemo.util.CMDLArgumentParser;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,8 +17,6 @@ public class Start {
      * @param args The command line arguments
      */
     public static void main(String[] args) {
-        log.info(Constants.LINE);
-        log.info("::::::: WELCOME TO GRPC SERVER :::::::");
         try {
             /* Running some Pre-process jobs before running the server */
             CMDLArgumentParser.parse(args);

@@ -4,34 +4,16 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
+import com.techhub.grpcdemo.config.Constant;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * The startup code that run after application server startup
  *
  * @author Ram Niwash
- * @since 1.0.0
  */
 @Slf4j
 public class ServerReadyEvent {
-
-    /* The WELCOME_MSG Constant */
-    public static final String WELCOME_LINE = "WELCOME TO GRPC-Demo Application";
-
-    /* The LINE Constant */
-    public static final String LINE = "---------------------------------------------------------------------";
-
-    /* The NEW_LINE Constant */
-    private static final String NEW_LINE = "\n";
-
-    /* The HOST Constant */
-    private static final String HOST = "HOST";
-
-    /* The ONE_SPACE Constant */
-    private static final String ONE_SPACE = " ";
-
-    /* The COLON Constant */
-    private static final String COLON = ":";
 
     /**
      * Logs the Server URL (IP and Port number) for reference.
@@ -39,12 +21,12 @@ public class ServerReadyEvent {
      * @param portNumber the port number of server
      */
     public static void onServerReady(int portNumber) {
-        StringBuilder hosts = new StringBuilder(NEW_LINE);
-        hosts.append(LINE);
-        hosts.append(NEW_LINE);
-        hosts.append(WELCOME_LINE);
-        hosts.append(NEW_LINE);
-        hosts.append(LINE);
+        StringBuilder hosts = new StringBuilder(Constant.NEW_LINE);
+        hosts.append(Constant.LINE);
+        hosts.append(Constant.NEW_LINE);
+        hosts.append(Constant.WELCOME_MESSAGE);
+        hosts.append(Constant.NEW_LINE);
+        hosts.append(Constant.LINE);
         try {
             Enumeration<NetworkInterface> enumerationNW = NetworkInterface.getNetworkInterfaces();
             while (enumerationNW.hasMoreElements()) {
@@ -52,11 +34,12 @@ public class ServerReadyEvent {
                 Enumeration<InetAddress> enumeration = networkInterface.getInetAddresses();
                 while (enumeration.hasMoreElements()) {
                     InetAddress inetAddress = enumeration.nextElement();
-                    hosts.append(NEW_LINE).append(HOST).append(ONE_SPACE).append(COLON).append(ONE_SPACE)
-                            .append(inetAddress.getHostAddress()).append(COLON).append(portNumber);
+                    hosts.append(Constant.NEW_LINE).append(Constant.HOST).append(Constant.ONE_SPACE)
+                            .append(Constant.COLON).append(Constant.ONE_SPACE).append(inetAddress.getHostAddress())
+                            .append(Constant.COLON).append(portNumber);
                 }
-                hosts.append(NEW_LINE);
-                hosts.append(LINE);
+                hosts.append(Constant.NEW_LINE);
+                hosts.append(Constant.LINE);
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
