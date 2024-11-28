@@ -80,7 +80,10 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
-    implementation group: 'javax.usb', name: 'usb-api', version: '1.0.2'
+    /* USB detection dependency */
+    implementation group: 'org.usb4java', name: 'usb4java-javax', version: '1.3.0'
+    implementation group: 'org.usb4java', name: 'libusb4java', version: '1.3.0', ext: 'pom'
+
 }
 
 /* GRPC Protobuf Configuration */
@@ -126,6 +129,6 @@ jar {
     /* JAR Dependency from classpath Configuration */
     from {
         duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-        configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }

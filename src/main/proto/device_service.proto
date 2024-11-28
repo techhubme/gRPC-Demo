@@ -5,16 +5,25 @@ package com.techhub.grpc.services.device;
 
 /* Defines the GRPC DeviceService */
 service DeviceService{
-    rpc getSystemDeviceList(stream DeviceRequestData) returns (stream DeviceResponseData){}
+  rpc getSystemDeviceList(stream DeviceRequestData) returns (stream DeviceResponseData){}
 }
 
 /* Defines the GRPC DeviceRequestData */
 message DeviceRequestData{
-  string msg = 1;
+  bool all = 1;
 }
 
 /* Defines the GRPC DeviceResponseData */
 message DeviceResponseData{
   string msg = 1;
+  repeated Device devices = 2;
+}
+
+/* Defines the GRPC Device */
+message Device{
+  string deviceName = 1;
+  string deviceDescription = 2;
+  string vendorId = 3;
+  string productId = 4;
 }
 

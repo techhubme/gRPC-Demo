@@ -1,6 +1,8 @@
 package com.techhub.grpcdemo.server;
 
 import com.techhub.grpcdemo.config.Constant;
+import com.techhub.grpcdemo.repo.LocalDeviceRepo;
+import com.techhub.grpcdemo.services.DeviceService;
 import com.techhub.grpcdemo.services.EmployeeService;
 import com.techhub.grpcdemo.services.OrderService;
 import com.techhub.grpcdemo.services.ReceiptService;
@@ -46,6 +48,7 @@ public class GRPCServer {
                 .addService(new EmployeeService())
                 .addService(new OrderService())
                 .addService(new ReceiptService())
+                .addService(new DeviceService(new LocalDeviceRepo()))
                 .build();
 
         /* Alternative approach to create the server */
