@@ -32,8 +32,8 @@ public class DeviceService extends DeviceServiceGrpc.DeviceServiceImplBase {
             public void onNext(DeviceRequestData value) {
                 List<Device> devices = deviceRepo.getAllDevices();
                 DeviceResponseData deviceResponseData = DeviceResponseData.newBuilder()
+                        .setMsg(String.format("%s%d%s", "FOUND ", devices.size(), " DEVICES"))
                         .addAllDevices(devices)
-                        .setMsg("FOUND "+devices.size()+" DEVICE(S).")
                         .build();
                 responseObserver.onNext(deviceResponseData);
             }
