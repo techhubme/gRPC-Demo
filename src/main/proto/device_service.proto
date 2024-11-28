@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.techhub.grpc.services.device;
+
+/* Defines the GRPC DeviceService */
+service DeviceService{
+    rpc getSystemDeviceList(stream DeviceRequestData) returns (stream DeviceResponseData){}
+}
+
+/* Defines the GRPC DeviceRequestData */
+message DeviceRequestData{
+  string msg = 1;
+}
+
+/* Defines the GRPC DeviceResponseData */
+message DeviceResponseData{
+  string msg = 1;
+}
+
