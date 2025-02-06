@@ -39,9 +39,12 @@ public class GRPCServer {
     }
 
     /**
-     * Initialize and Starts the GRPC server
+     * Initialize and Starts the GRPC server.
+     * The Other option to build the GRPC Server
+     * ServerBuilder.forPort(this.portNumber).build();
      */
-    public void initialize(){
+    public void initialize() {
+
         this.server = Grpc.newServerBuilderForPort(this.portNumber, InsecureServerCredentials.create())
                 .addService(ProtoReflectionService.newInstance())
                 /* Add Services here */
@@ -50,15 +53,12 @@ public class GRPCServer {
                 .addService(new ReceiptService())
                 .addService(new DeviceService(new LocalDeviceRepo()))
                 .build();
-
-        /* Alternative approach to create the server */
-        //this.server = ServerBuilder.forPort(this.portNumber).build();
     }
 
     /**
      * Start the server
      *
-     * @throws IOException exception
+     * @throws IOException          exception
      * @throws InterruptedException exception
      */
     public void start() throws IOException, InterruptedException {
