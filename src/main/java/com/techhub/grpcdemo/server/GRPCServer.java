@@ -5,6 +5,7 @@ import com.techhub.grpcdemo.config.Constant;
 //import com.techhub.grpcdemo.services.DeviceService;
 import com.techhub.grpcdemo.services.EmployeeService;
 import com.techhub.grpcdemo.services.OrderService;
+import com.techhub.grpcdemo.services.PaperService;
 import com.techhub.grpcdemo.services.ReceiptService;
 import com.techhub.grpcdemo.util.CMDLArgumentParser;
 import io.grpc.Grpc;
@@ -51,6 +52,7 @@ public class GRPCServer {
                 .addService(new EmployeeService())
                 .addService(new OrderService())
                 .addService(new ReceiptService())
+                .addService(new PaperService())
 //                .addService(new DeviceService(new LocalDeviceRepo()))
                 .build();
     }

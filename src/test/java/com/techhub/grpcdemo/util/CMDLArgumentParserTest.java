@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * @author Ram Niwash
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CMDLArgumentParserTest {
+class CMDLArgumentParserTest {
 
     /* The COMMAND LINE ARGUMENTS */
     private static final String[] CMDL_ARGS = {"-port:4500", "-arg1:Hello", "-arg2:89", "-arg3:u87g",
@@ -22,7 +22,7 @@ public class CMDLArgumentParserTest {
 
     @Test
     @Order(1)
-    public void parseTest() {
+    void parseTest() {
         CMDLArgumentParser.parse(CMDL_ARGS);
         Assertions.assertTrue(Boolean.TRUE);
     }
@@ -30,7 +30,7 @@ public class CMDLArgumentParserTest {
     @ParameterizedTest
     @MethodSource("getArgumentTestInputs")
     @Order(2)
-    public void getArgumentTest(String cmdlKey, String cmdlVal) {
+    void getArgumentTest(String cmdlKey, String cmdlVal) {
         String value = CMDLArgumentParser.getArgumentValue(cmdlKey);
         Assertions.assertEquals(cmdlVal, value);
     }
@@ -45,7 +45,7 @@ public class CMDLArgumentParserTest {
 
     @Test
     @Order(3)
-    public void getArgumentTestException() throws RuntimeException {
+    void getArgumentTestException() throws RuntimeException {
         Executable executable = () -> {
             CMDLArgumentParser.getArgumentValue("arg5");
         };

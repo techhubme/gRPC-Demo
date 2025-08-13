@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.techhub.grpc.services.paper;
+
+/* Defines the GRPC DeviceService */
+service PaperService{
+  rpc printPaper(stream PaperRequestData) returns (stream PaperResponseData){}
+}
+
+message PaperRequestData{
+  string requestData = 1;
+}
+
+message PaperResponseData{
+  string message = 1;
+}
