@@ -35,7 +35,9 @@ application {
 
 /* Repository configuration for dependencies of library */
 repositories {
-
+    maven {
+        url "https://splunk.jfrog.io/splunk/ext-releases-local"
+    }
     /* The Maven Central Repository */
     mavenCentral()
 }
@@ -77,6 +79,7 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
     implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
     implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3'
+    runtimeOnly 'com.splunk.logging:splunk-library-javalogging:1.11.8'
 
     /* JUnit Dependency */
     testImplementation platform('org.junit:junit-bom:5.10.0')
